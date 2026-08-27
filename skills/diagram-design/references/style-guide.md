@@ -137,3 +137,25 @@ Three options:
 - **Paper is warm-neutral, not pure white**: pure white turns the design sterile. Pick a cream, bone, or light grey with a hint of warmth.
 - **Dot pattern is optional, not default**: the 22×22 dot pattern is an opt-in "dotted paper" variant (good for long-form editorial hero diagrams). The default background is a clean `paper` fill, no pattern. When the pattern is enabled, it should sit at ~10% opacity of `ink` on `paper` — visible but quiet.
 - **Container is clean by default**: the diagram sits directly on the page paper, no secondary container background or border. A framed variant (`paper-2` bg + `rule` border + 8px radius + padding) is available as an opt-in for card-heavy layouts, but don't reach for it by default — the extra chrome fights the figure.
+
+---
+
+## Custom tokens — ThuanHai Energy (PM Squad Operating Model diagrams)
+
+Mapped from `thuanhaipricingtool` (`src/index.css` shadcn/Tailwind HSL tokens) on 2026-08-27. Used for the `projects/pm-squad-operating-model/` diagrams only — does not replace the default skin above for other projects.
+
+| Role | Purpose | Light | Dark |
+|---|---|---|---|
+| `paper` | Page background, default node fill | `#f8fafc` (`--background`) | `#0f1720` |
+| `paper-2` | Diagram container bg, secondary fill | `#eaedf1` (`--secondary`) | `#182230` |
+| `ink` | Primary text, primary stroke | `#1a212d` (`--foreground`) | `#e7ecf3` |
+| `muted` | Secondary text, default arrow stroke | `#65758b` (`--muted-foreground`) | `#93a2b8` |
+| `soft` | Sublabels, boundary labels | `#8a97a8` | `#7d8ba0` |
+| `rule` | Hairline borders | `#dde2e9` (`--border`) | `rgba(231,236,243,0.14)` |
+| `rule-solid` | Stronger borders, baselines | `#c7cfda` | `rgba(231,236,243,0.28)` |
+| `accent` | Focal / 1–2 max per diagram | `#1669b1` (`--primary`) | `#5ba0e0` |
+| `accent-tint` | Fill for accent-bordered boxes | `rgba(22,105,177,0.08)` | `rgba(91,160,224,0.12)` |
+| `link` | Cross-references, external arrows | `#0e4f8b` (`--sidebar-header`) | `#7ab3ea` |
+| `warn` | Open item / not-yet-confirmed | `#f59f0a` (`--warning`) | `#f5b23f` |
+
+Fonts: same Geist / Geist Mono / Instrument Serif stack as the default skin (ThuanHaiPricingTool itself uses Be Vietnam Pro/Inter — not swapped in here, since Vietnamese-label diagrams still read cleanly in Geist and the diagram type system assumes this family for spacing math).

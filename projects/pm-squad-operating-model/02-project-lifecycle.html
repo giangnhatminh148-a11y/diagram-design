@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>End-to-End Project Lifecycle — PM Squad (v0.1)</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #f8fafc; --ink: #1a212d; --muted: #65758b; --accent: #1669b1; --warn: #f59f0a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Geist', Inter, sans-serif; padding: 32px 24px 48px; }
+  h1 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.75rem; margin: 0 0 4px; }
+  .eyebrow { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin: 0 0 24px; max-width: 760px; line-height: 1.5; }
+  .status { display:inline-block; font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:.08em; color:var(--warn); border:1px solid var(--warn); border-radius:4px; padding:2px 8px; margin-bottom:16px; }
+  .canvas { width: 100%; max-width: 1180px; }
+  svg { width: 100%; height: auto; display: block; }
+  footer { margin-top: 24px; font-size: 11px; color: var(--muted); max-width: 760px; line-height: 1.6; }
+  footer b { color: var(--ink); }
+</style>
+</head>
+<body>
+  <div class="eyebrow">PM Squad Operating Model · Diagram 2 of 2</div>
+  <h1>End-to-End Project Lifecycle</h1>
+  <div class="status">DRAFT v0.1 — chờ Minh xác nhận</div>
+  <p class="subtitle">PM là single accountable integrator xuyên suốt lifecycle; PTDA/TKDA là <b>stage</b>, không phải sub-department. BOD Gate là điểm khoá version bắt buộc trước khi PKD đàm phán; Contract Signed (PKD cập nhật) là trigger kích hoạt Delivery Stage — không phải đổi chủ dự án.</p>
+  <div class="canvas">
+    <svg viewBox="0 0 1238 556" xmlns="http://www.w3.org/2000/svg" font-family="Geist, Inter, sans-serif">
+<defs>
+  <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#65758b"/></marker>
+  <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#1669b1"/></marker>
+  <marker id="arrow-sm" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0, 6 2.5, 0 5" fill="#65758b"/></marker>
+</defs>
+<rect x="0" y="0" width="1238" height="556" fill="#f8fafc"/>
+<rect x="148" y="124" width="1090" height="84" fill="rgba(26,33,45,0.018)"/>
+<rect x="148" y="292" width="1090" height="84" fill="rgba(26,33,45,0.018)"/>
+<line x1="0" y1="40" x2="1238" y2="40" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="124" x2="1238" y2="124" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="208" x2="1238" y2="208" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="292" x2="1238" y2="292" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="376" x2="1238" y2="376" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="460" x2="1238" y2="460" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="460" x2="1238" y2="460" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="148" y1="40" x2="148" y2="460" stroke="#c7cfda" stroke-width="1"/>
+<rect x="198.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="206.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">1</text>
+<text x="206.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">INTAKE</text>
+<rect x="316.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="324.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">2</text>
+<text x="324.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">ASSIGN</text>
+<rect x="434.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="442.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">3</text>
+<text x="442.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">SURVEY</text>
+<rect x="552.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="560.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">4</text>
+<text x="560.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">ASSESS</text>
+<rect x="670.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="678.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">5</text>
+<text x="678.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">SCENARIO</text>
+<rect x="788.0" y="8" width="16" height="16" rx="8" fill="rgba(22,105,177,0.08)" stroke="#1669b1" stroke-width="1"/>
+<text x="796.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1669b1">6</text>
+<text x="796.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#1669b1">BOD GATE</text>
+<rect x="906.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="914.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">7</text>
+<text x="914.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">NEGOTIATE</text>
+<rect x="1024.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="1032.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">8</text>
+<text x="1032.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">ACTIVATE</text>
+<rect x="1142.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="1150.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">9</text>
+<text x="1150.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">DELIVERY</text>
+<text x="74.0" y="78.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">PKD</text>
+<text x="74.0" y="89.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">(SALES)</text>
+<text x="74.0" y="169.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">PM</text>
+<text x="74.0" y="246.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">SPECIALIST</text>
+<text x="74.0" y="257.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">POOLS</text>
+<text x="74.0" y="330.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">CROSS-FUNC</text>
+<text x="74.0" y="341.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">INTERFACE</text>
+<text x="74.0" y="421.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">BOD</text>
+<path d="M 256.0,82.0 H 316.0 Q 324.0,82.0 324.0,90.0 V 134.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 374.0,166.0 H 434.0 Q 442.0,166.0 442.0,174.0 V 218.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<line x1="492.0" y1="250.0" x2="510.0" y2="250.0" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 492.0,255.0 H 552.0 Q 560.0,255.0 560.0,263.0 V 302.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 610.0,250.0 H 665.0 Q 673.0,250.0 673.0,242.0 V 198.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 610.0,334.0 H 675.0 Q 683.0,334.0 683.0,326.0 V 198.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 728.0,161.0 H 788.0 Q 796.0,161.0 796.0,169.0 V 386.0" fill="none" stroke="#1669b1" stroke-width="1.2" marker-end="url(#arrow-accent)"/>
+<path d="M 846.0,418.0 H 906.0 Q 914.0,418.0 914.0,410.0 V 114.0" fill="none" stroke="#1669b1" stroke-width="1.2" marker-end="url(#arrow-accent)"/>
+<line x1="964.0" y1="82.0" x2="982.0" y2="82.0" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<line x1="728.0" y1="166.0" x2="982.0" y2="166.0" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<line x1="1032.0" y1="114.0" x2="1032.0" y2="134.0" stroke="#65758b" stroke-width="1.0" stroke-dasharray="4,3" marker-end="url(#arrow-sm)"/>
+<line x1="1082.0" y1="166.0" x2="1100.0" y2="166.0" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 1082.0,171.0 H 1142.0 Q 1150.0,171.0 1150.0,179.0 V 302.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<rect x="156.0" y="50.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="160.0" y="54.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="167.0" y="61.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PKD</text>
+<text x="206.0" y="77.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Sales request</text>
+<text x="206.0" y="88.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">brief → PM</text>
+<text x="206.0" y="100.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">email / CRM</text>
+<rect x="236.0" y="104.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="244.0" y="110.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="274.0" y="134.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="278.0" y="138.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="285.0" y="145.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PM</text>
+<text x="324.0" y="161.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">PM assignment</text>
+<text x="324.0" y="172.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">owner + workspace</text>
+<text x="324.0" y="184.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">PM pool</text>
+<rect x="278.0" y="188.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="286.0" y="194.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="354.0" y="188.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="362.0" y="194.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="392.0" y="218.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="396.0" y="222.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="403.0" y="229.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">SPC</text>
+<text x="442.0" y="245.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Field survey</text>
+<text x="442.0" y="256.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">evidence · photos</text>
+<text x="442.0" y="268.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">Survey pool</text>
+<rect x="396.0" y="272.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="404.0" y="278.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="472.0" y="272.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="480.0" y="278.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="510.0" y="218.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="514.0" y="222.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="521.0" y="229.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">SPC</text>
+<text x="560.0" y="245.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Investment assessment</text>
+<text x="560.0" y="256.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">assumption register</text>
+<text x="560.0" y="268.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">Investment pool</text>
+<rect x="514.0" y="272.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="522.0" y="278.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="590.0" y="272.0" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="598.0" y="278.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<rect x="510.0" y="302.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="514.0" y="306.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="521.0" y="313.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">XFN</text>
+<text x="560.0" y="329.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Technical feasibility</text>
+<text x="560.0" y="340.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">layout · constructability</text>
+<text x="560.0" y="352.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">Kỹ thuật / Xây dựng</text>
+<rect x="514.0" y="356.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="522.0" y="362.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="590.0" y="356.0" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="598.0" y="362.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<rect x="628.0" y="134.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="632.0" y="138.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="639.0" y="145.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PM</text>
+<text x="678.0" y="161.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Preliminary scenario</text>
+<text x="678.0" y="172.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">version locked</text>
+<text x="678.0" y="184.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">workspace</text>
+<rect x="632.0" y="188.0" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="640.0" y="194.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<rect x="708.0" y="188.0" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="716.0" y="194.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<rect x="746.0" y="386.0" width="100" height="64" rx="4" fill="rgba(22,105,177,0.08)" stroke="#1669b1" stroke-width="1.4"/>
+<rect x="750.0" y="390.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="757.0" y="397.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">BOD</text>
+<text x="796.0" y="413.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1669b1">BOD gate</text>
+<text x="796.0" y="424.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">approve / revise</text>
+<text x="796.0" y="436.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">BOD</text>
+<rect x="750.0" y="440.0" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="758.0" y="446.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<rect x="826.0" y="440.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="834.0" y="446.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="864.0" y="50.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="868.0" y="54.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="875.0" y="61.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PKD</text>
+<text x="914.0" y="77.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Negotiation support</text>
+<text x="914.0" y="88.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">scope/commercial impact</text>
+<text x="914.0" y="100.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">PKD</text>
+<rect x="868.0" y="104.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="876.0" y="110.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="944.0" y="104.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="952.0" y="110.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="982.0" y="50.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="986.0" y="54.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="993.0" y="61.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PKD</text>
+<text x="1032.0" y="77.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Contract signed</text>
+<text x="1032.0" y="88.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">PKD cập nhật</text>
+<text x="1032.0" y="100.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">PKD</text>
+<rect x="986.0" y="104.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="994.0" y="110.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="1062.0" y="104.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="1070.0" y="110.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="982.0" y="134.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="986.0" y="138.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="993.0" y="145.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PM</text>
+<text x="1032.0" y="161.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Reconciliation</text>
+<text x="1032.0" y="172.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">execution readiness</text>
+<text x="1032.0" y="184.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">workspace</text>
+<rect x="986.0" y="188.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="994.0" y="194.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="1062.0" y="188.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="1070.0" y="194.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="1100.0" y="134.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="1104.0" y="138.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="1111.0" y="145.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PM</text>
+<text x="1150.0" y="161.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Delivery ownership</text>
+<text x="1150.0" y="172.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">plan · execute · closeout</text>
+<text x="1150.0" y="184.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">workspace</text>
+<rect x="1104.0" y="188.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="1112.0" y="194.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="1180.0" y="188.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="1188.0" y="194.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="1100.0" y="302.0" width="100" height="64" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="1104.0" y="306.0" width="14" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="1111.0" y="313.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">XFN</text>
+<text x="1150.0" y="329.0" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a212d">Delivery execution</text>
+<text x="1150.0" y="340.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">constructability · install</text>
+<text x="1150.0" y="352.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">Xây dựng / Kỹ thuật</text>
+<rect x="1104.0" y="356.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="1112.0" y="362.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="1180.0" y="356.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="1188.0" y="362.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<text x="796.0" y="464.0" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="9.5" fill="#f59f0a">↺ Revision loop: BOD yêu cầu sửa → PM mở lại Scenario (bước 5)</text>
+<text x="152" y="473" font-family="Geist Mono, monospace" font-size="7" letter-spacing="0.1em" fill="#8a97a8">STEPS</text>
+<rect x="208" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="215" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">1</text>
+<text x="226" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Intake</text>
+<rect x="282" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="289" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">2</text>
+<text x="300" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Assign</text>
+<rect x="356" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="363" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">3</text>
+<text x="374" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Survey</text>
+<rect x="430" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="437" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">4</text>
+<text x="448" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Assess</text>
+<rect x="504" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="511" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">5</text>
+<text x="522" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Scenario</text>
+<rect x="592" y="466" width="14" height="14" rx="7" fill="rgba(22,105,177,0.08)"/>
+<text x="599" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1669b1">6</text>
+<text x="610" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Bod Gate</text>
+<rect x="680" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="687" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">7</text>
+<text x="698" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Negotiate</text>
+<rect x="775" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="782" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">8</text>
+<text x="793" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Activate</text>
+<rect x="863" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="870" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">9</text>
+<text x="881" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Delivery</text>
+<text x="152" y="499" font-family="Geist Mono, monospace" font-size="7" letter-spacing="0.1em" fill="#8a97a8">DATA TYPE</text>
+<rect x="240" y="491" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="248" y="497" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<text x="260" y="497" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">File/report</text>
+<rect x="340" y="491" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="348" y="497" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<text x="360" y="497" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">List/task</text>
+<rect x="428" y="491" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="436" y="497" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<text x="448" y="497" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Table</text>
+<text x="496" y="497" font-family="Geist Mono, monospace" font-size="6" font-style="italic" fill="#8a97a8">(trái = input · phải = output)</text>
+<text x="152" y="520" font-family="Geist Mono, monospace" font-size="7" letter-spacing="0.1em" fill="#8a97a8">FLOW</text>
+<line x1="208" y1="515" x2="230" y2="515" stroke="#65758b" stroke-width="1.2"/>
+<text x="235" y="518" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Chuyển giao dữ liệu</text>
+<line x1="368.8" y1="515" x2="390.8" y2="515" stroke="#1669b1" stroke-width="1.2"/>
+<text x="395.8" y="518" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Vào/ra BOD Gate</text>
+<line x1="504.8" y1="515" x2="526.8" y2="515" stroke="#65758b" stroke-width="1.2" stroke-dasharray="4,3"/>
+<text x="531.8" y="518" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Kích hoạt (sự kiện)</text>
+<text x="152" y="539" font-family="Instrument Serif, serif" font-style="italic" font-size="9" fill="#8a97a8">Mọi bước ghi lại vào ThuanHaiPricingTool (System of Record) — xem sơ đồ Org &amp; Operating Model cho pool/interface ownership đầy đủ.</text>
+</svg>
+  </div>
+  <footer>
+    Nguồn: Notion — <b>PM Squad — Socratic Drill &amp; Operating Model</b> (mục 5, 9, "Kết luận"). Đối chiếu <code>docs/SOP_PTDA_V1.md</code> và <code>docs/PM_SQUAD_OPERATING_MODEL_V1.md</code> trong <code>thuanhaipricingtool</code>.<br>
+    <b>Chưa chốt / không vẽ như quyết định cuối:</b> RACI chi tiết PM vs Mentor, resource-allocation formula, checklist BOD/contract reconciliation, KPI, SOP chi tiết sau Contract Signed. Xem mục 10 của trang Notion gốc.<br>
+    <b>Đã đơn giản hoá cho bản v0.1:</b> "PM + Mentor" overlay, Document Control/Admin pool, và Strategic &amp; System Design pool được gộp vào lane PM/SPECIALIST cho gọn — chi tiết đầy đủ nằm ở Diagram 1 (Org &amp; Operating Model).
+  </footer>
+</body>
+</html>
