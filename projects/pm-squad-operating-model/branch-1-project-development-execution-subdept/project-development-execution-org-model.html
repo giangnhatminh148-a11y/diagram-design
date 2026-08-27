@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Org Option A — Development vs Execution Sub-Department (v0.1)</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f8fafc; --paper2: #eaedf1; --ink: #1a212d; --muted: #65758b; --soft: #8a97a8;
+    --rule: #dde2e9; --rule-solid: #c7cfda; --accent: #1669b1; --accent-tint: rgba(22,105,177,0.08);
+    --warn: #f59f0a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Geist', Inter, sans-serif; padding: 32px 24px 48px; }
+  h1 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.75rem; margin: 0 0 4px; }
+  .eyebrow { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin: 0 0 20px; max-width: 780px; line-height: 1.5; }
+  .status { display:inline-block; font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:.08em; color:var(--warn); border:1px solid var(--warn); border-radius:4px; padding:2px 8px; margin-bottom:16px; }
+  .canvas { width: 100%; max-width: 1220px; }
+  svg { width: 100%; height: auto; display: block; }
+  .node-title { font-size: 11px; font-weight: 600; }
+  .node-sub { font-family: 'Geist Mono', monospace; font-size: 7px; fill: var(--muted); }
+  .pod-item { font-size: 8.5px; fill: var(--ink); }
+  .eyebrow-svg { font-family: 'Geist Mono', monospace; font-size: 7px; letter-spacing: 0.1em; fill: var(--soft); }
+  footer { margin-top: 24px; font-size: 11px; color: var(--muted); max-width: 780px; line-height: 1.6; }
+  footer b { color: var(--ink); }
+  footer .open { color: var(--warn); }
+</style>
+</head>
+<body>
+  <div class="eyebrow">Phương án tái cấu trúc A (độc lập với Phương án B) · tổ chức theo GIAI ĐOẠN</div>
+  <h1>Org Option A — Development &amp; Execution Sub-Department</h1>
+  <div class="status">DRAFT v0.1 — chờ Minh xác nhận</div>
+  <p class="subtitle"><b style="color:#f59f0a">Đây là 1 trong 2 phương án tái cấu trúc ĐỘC LẬP</b> đang được cân nhắc song song (xem Option B ở thư mục <code>branch-2-pm-squad-expertise-pool/</code>) — không kết hợp chung, dùng để so sánh trước khi Minh chọn. Phương án A tổ chức theo <b>giai đoạn dự án</b>: tách hẳn thành 2 sub-department có <b>2 trưởng bộ phận riêng</b> — một quản lý toàn bộ Project Development Stage, một quản lý toàn bộ Project Execution Stage. Một dự án sẽ đổi chủ quản lý (không phải đổi PM) khi bước từ Development sang Execution — khác biệt cốt lõi so với Phương án B (PM giữ xuyên suốt).</p>
+
+  <div class="canvas">
+<svg viewBox="0 0 1220 820" xmlns="http://www.w3.org/2000/svg" font-family="Geist, Inter, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#65758b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1220" height="820" fill="#f8fafc"/>
+
+  <!-- ===== connectors ===== -->
+  <line x1="460" y1="96" x2="460" y2="150" stroke="#65758b" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- phó phòng -> 2 trưởng bộ phận (bus) -->
+  <path d="M 460,222 V 244 H 300 V 260" fill="none" stroke="#65758b" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 460,222 V 244 H 700 V 260" fill="none" stroke="#65758b" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="460" y1="222" x2="460" y2="244" stroke="#65758b" stroke-width="1"/>
+
+  <!-- mỗi trưởng bộ phận -> team riêng -->
+  <path d="M 300,332 V 360" fill="none" stroke="#1669b1" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <path d="M 700,332 V 360" fill="none" stroke="#1669b1" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- handoff giữa 2 sub-department (dự án chuyển chủ quản lý) -->
+  <path d="M 460,405 H 600" fill="none" stroke="#f59f0a" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="530" y="399" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6.5" fill="#f59f0a">handoff dự án</text>
+
+  <!-- Development team -> cross-functional interfaces (dashed) -->
+  <path d="M 460,470 V 560 Q 460,572 472,572 H 878" fill="none" stroke="#65758b" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- Execution team -> cross-functional interfaces (dashed, quan hệ chặt hơn) -->
+  <path d="M 860,455 H 900 Q 912,455 912,467 V 550" fill="none" stroke="#65758b" stroke-width="1.1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- ===== root ===== -->
+  <g>
+    <rect x="350" y="40" width="220" height="56" rx="5" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+    <text x="460" y="63" text-anchor="middle" class="node-title">TRƯỞNG PHÒNG DỰ ÁN</text>
+    <text x="460" y="78" text-anchor="middle" class="node-sub">Governance · Quyết định cấp cao · Escalation</text>
+  </g>
+
+  <!-- ===== phó phòng (giữ nguyên vai trò như Phương án B) ===== -->
+  <g>
+    <rect x="350" y="150" width="220" height="72" rx="5" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+    <text x="460" y="174" text-anchor="middle" class="node-title">PHÓ PHÒNG DỰ ÁN</text>
+    <text x="460" y="188" text-anchor="middle" class="node-sub">Điều phối ưu tiên khi quá tải</text>
+    <text x="460" y="199" text-anchor="middle" class="node-sub">Phân xử conflict giữa 2 sub-department</text>
+    <text x="460" y="210" text-anchor="middle" class="node-sub">Oversight cả Development &amp; Execution</text>
+    <text x="460" y="221" text-anchor="middle" font-size="6.5" font-style="italic" fill="#f59f0a">(vai trò Phó phòng giữ nguyên ở cả 2 phương án)</text>
+  </g>
+
+  <!-- ===== Trưởng bộ phận Phát Triển Dự Án ===== -->
+  <g>
+    <rect x="190" y="260" width="220" height="72" rx="5" fill="#ffffff" stroke="#1a212d" stroke-width="1.4"/>
+    <text x="300" y="284" text-anchor="middle" class="node-title">TRƯỞNG BỘ PHẬN</text>
+    <text x="300" y="297" text-anchor="middle" class="node-title">PHÁT TRIỂN DỰ ÁN</text>
+    <text x="300" y="310" text-anchor="middle" class="node-sub">Sở hữu toàn bộ Project Development Stage</text>
+    <text x="300" y="321" text-anchor="middle" class="node-sub">Survey → Assessment → Scenario → BOD Gate</text>
+  </g>
+
+  <!-- ===== Trưởng bộ phận Triển Khai Dự Án ===== -->
+  <g>
+    <rect x="590" y="260" width="220" height="72" rx="5" fill="rgba(22,105,177,0.08)" stroke="#1669b1" stroke-width="1.4"/>
+    <text x="700" y="284" text-anchor="middle" class="node-title" fill="#1669b1">TRƯỞNG BỘ PHẬN</text>
+    <text x="700" y="297" text-anchor="middle" class="node-title" fill="#1669b1">TRIỂN KHAI DỰ ÁN</text>
+    <text x="700" y="310" text-anchor="middle" class="node-sub">Sở hữu toàn bộ Project Execution Stage</text>
+    <text x="700" y="321" text-anchor="middle" class="node-sub">Contract Signed → Delivery → Closeout</text>
+  </g>
+
+  <!-- ===== team dưới Phát Triển ===== -->
+  <g>
+    <rect x="150" y="360" width="300" height="150" rx="5" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+    <text x="300" y="380" text-anchor="middle" class="eyebrow-svg">TEAM PHÁT TRIỂN · report Trưởng BP Phát Triển</text>
+    <line x1="164" y1="390" x2="436" y2="390" stroke="#dde2e9" stroke-width="1"/>
+    <text x="300" y="410" text-anchor="middle" class="pod-item" font-weight="600">Khảo sát &amp; Survey Report</text>
+    <text x="300" y="423" text-anchor="middle" class="node-sub">plan · evidence · report · open items</text>
+    <text x="300" y="443" text-anchor="middle" class="pod-item" font-weight="600">Investment Analysis</text>
+    <text x="300" y="456" text-anchor="middle" class="node-sub">assumption · model · scenario · revision</text>
+    <text x="300" y="476" text-anchor="middle" class="pod-item" font-weight="600">Document Control / Strategic Design</text>
+    <text x="300" y="498" text-anchor="middle" class="node-sub" font-style="italic" fill="#f59f0a">Thành phần đội cụ thể — cần Minh xác nhận thêm</text>
+  </g>
+
+  <!-- ===== team dưới Triển Khai ===== -->
+  <g>
+    <rect x="550" y="360" width="300" height="150" rx="5" fill="rgba(22,105,177,0.05)" stroke="#1669b1" stroke-width="1.2"/>
+    <text x="700" y="380" text-anchor="middle" class="eyebrow-svg" fill="#1669b1">TEAM TRIỂN KHAI · report Trưởng BP Triển Khai</text>
+    <line x1="564" y1="390" x2="836" y2="390" stroke="#dde2e9" stroke-width="1"/>
+    <text x="700" y="410" text-anchor="middle" class="pod-item" font-weight="600">Execution PM(s)</text>
+    <text x="700" y="423" text-anchor="middle" class="node-sub">nhận bàn giao từ Phát Triển sau Contract Signed</text>
+    <text x="700" y="443" text-anchor="middle" class="pod-item" font-weight="600">Điều phối công trường / nhà thầu</text>
+    <text x="700" y="456" text-anchor="middle" class="node-sub">Xây dựng · Kỹ thuật · Martech</text>
+    <text x="700" y="479" text-anchor="middle" class="node-sub" font-style="italic" fill="#f59f0a">SOP giai đoạn Triển khai chưa được nạp —</text>
+    <text x="700" y="491" text-anchor="middle" class="node-sub" font-style="italic" fill="#f59f0a">thành phần đội minh hoạ, chưa xác nhận</text>
+  </g>
+
+  <!-- ===== cross-functional interfaces ===== -->
+  <g>
+    <rect x="890" y="450" width="300" height="170" rx="5" fill="rgba(26,33,45,0.03)" stroke="rgba(26,33,45,0.30)" stroke-width="1" stroke-dasharray="5,3"/>
+    <text x="1040" y="470" text-anchor="middle" class="eyebrow-svg">CROSS-FUNCTIONAL INTERFACES · thuộc phòng ban khác</text>
+    <line x1="904" y1="480" x2="1176" y2="480" stroke="#dde2e9" stroke-width="1"/>
+    <text x="1040" y="500" text-anchor="middle" class="pod-item">Công nghệ Kỹ thuật</text>
+    <text x="1040" y="520" text-anchor="middle" class="pod-item">Xây dựng</text>
+    <text x="1040" y="540" text-anchor="middle" class="pod-item">QHSE / Pháp lý</text>
+    <text x="1040" y="560" text-anchor="middle" class="pod-item">Kế hoạch Tổng hợp</text>
+    <text x="1040" y="580" text-anchor="middle" class="pod-item">Martech / Nhà thầu</text>
+    <text x="1040" y="605" text-anchor="middle" class="node-sub" font-style="italic">Team Triển khai phụ thuộc nhiều hơn vào interface này</text>
+  </g>
+
+  <!-- ===== side callout : hệ quả cần cân nhắc ===== -->
+  <g>
+    <text x="150" y="660" class="eyebrow-svg">HỆ QUẢ CẦN CÂN NHẮC SO VỚI PHƯƠNG ÁN B</text>
+    <line x1="150" y1="668" x2="1070" y2="668" stroke="#c7cfda" stroke-width="1"/>
+
+    <text x="150" y="688" font-size="8.5" font-weight="600" fill="#1a212d">Continuity</text>
+    <text x="150" y="700" class="node-sub">Dự án đổi chủ quản lý khi Contract Signed</text>
+    <text x="150" y="711" class="node-sub">(khác Phương án B: PM giữ xuyên suốt)</text>
+
+    <text x="450" y="688" font-size="8.5" font-weight="600" fill="#1a212d">Headcount</text>
+    <text x="450" y="700" class="node-sub">Cần 2 trưởng bộ phận thay vì 1 Trưởng PM Squad</text>
+    <text x="450" y="711" class="node-sub">— chi phí quản lý cao hơn</text>
+
+    <text x="750" y="688" font-size="8.5" font-weight="600" fill="#1a212d">Accountability</text>
+    <text x="750" y="700" class="node-sub">Rõ ràng theo từng giai đoạn, nhưng</text>
+    <text x="750" y="711" class="node-sub">không có 1 người chịu trách nhiệm end-to-end</text>
+
+    <text x="150" y="732" font-size="8.5" font-weight="600" fill="#f59f0a">⚠ Điểm cần tránh</text>
+    <text x="150" y="744" class="node-sub" fill="#65758b">Bàn giao Development → Execution phải có handoff</text>
+    <text x="150" y="755" class="node-sub" fill="#65758b">package rõ ràng (assumption, scenario, BOD minutes),</text>
+    <text x="150" y="766" class="node-sub" fill="#65758b">nếu không sẽ mất context giữa 2 sub-department.</text>
+  </g>
+</svg>
+  </div>
+
+  <footer>
+    Nguồn: Notion — <b>PM Squad — Socratic Drill &amp; Operating Model</b>, điều chỉnh theo phản hồi trực tiếp (27/08): <b>Phương án A là mô hình tổ chức theo giai đoạn — 2 trưởng bộ phận độc lập (Phát Triển Dự Án / Triển Khai Dự Án), Phó Phòng giữ nguyên vai trò như ở Phương án B</b>. Đối chiếu <code>docs/PM_SQUAD_OPERATING_MODEL_V1.md</code> và <code>docs/SOP_PTDA_V1.md</code> trong <code>thuanhaipricingtool</code>.<br>
+    <b>Chưa chốt / không vẽ như quyết định cuối:</b> thành phần đội cụ thể của Team Triển Khai (SOP giai đoạn này chưa được nạp — xem <code>workflow-project-lifecycle/</code>), salary bands, số lượng nhân sự thực tế, RACI chi tiết giữa 2 sub-department, cơ chế handoff chính thức. Xem mục 10 của trang Notion gốc.<br>
+    <span class="open">Đây là phương án để so sánh, thiên về option</span> — không phải quyết định đã chốt. Chọn giữa Phương án A và B ảnh hưởng trực tiếp tới KPI và scope thảo luận sau này.
+  </footer>
+</body>
+</html>
