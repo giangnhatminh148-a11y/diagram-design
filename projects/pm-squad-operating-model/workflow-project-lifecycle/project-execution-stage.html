@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Project Execution Stage — PM Squad (v0.1)</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #f8fafc; --ink: #1a212d; --muted: #65758b; --accent: #1669b1; --warn: #f59f0a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Geist', Inter, sans-serif; padding: 32px 24px 48px; }
+  h1 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.75rem; margin: 0 0 4px; }
+  .eyebrow { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin: 0 0 24px; max-width: 820px; line-height: 1.5; }
+  .status { display:inline-block; font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:.08em; color:var(--warn); border:1px solid var(--warn); border-radius:4px; padding:2px 8px; margin-bottom:16px; }
+  .canvas { width: 100%; max-width: 1080px; }
+  svg { width: 100%; height: auto; display: block; }
+  footer { margin-top: 24px; font-size: 11px; color: var(--muted); max-width: 820px; line-height: 1.6; }
+  footer b { color: var(--ink); }
+  footer .open { color: var(--warn); }
+</style>
+</head>
+<body>
+  <div class="eyebrow">Workflow · nối tiếp Project Development Stage</div>
+  <h1>Project Execution Stage</h1>
+  <div class="status">DRAFT v0.1 — dựng từ dữ liệu thật, chờ Minh xác nhận</div>
+  <p class="subtitle"><b>Khác với giả định trước</b>: SOP giai đoạn này <b>đã tồn tại</b> trong hệ thống — bảng <code>wbs_catalog</code> (scope <code>applies_to='steam'</code>, 45 dòng) đã chuẩn hoá 4 pillar Xây Dựng → Mua Hàng &amp; Chế Tạo → Lắp Đặt → Nghiệm Thu, và <code>progress_items</code>/<code>tasks</code> xác nhận adoption thật trên 1–10 dự án mỗi hạng mục. Diagram này vẽ lại 4 pillar đó ở mức tổng quan (không lặp lại toàn bộ 39 hạng mục level-3), cộng thêm lớp <b>work-package thiết bị</b> (130 dòng thật, vd Bồn dầu/Multicyclone/PLC-SCADA) phát hiện trong <code>tasks.task_type='work_package'</code> — lớp này chưa có trong <code>wbs_catalog</code>.</p>
+
+  <div class="canvas">
+    <svg viewBox="0 0 1030 556" xmlns="http://www.w3.org/2000/svg" font-family="Geist, Inter, sans-serif">
+<defs>
+  <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#65758b"/></marker>
+  <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#1669b1"/></marker>
+</defs>
+<rect width="1030" height="556" fill="#f8fafc"/>
+<rect x="150" y="124" width="880" height="84" fill="rgba(26,33,45,0.018)"/>
+<rect x="150" y="292" width="880" height="84" fill="rgba(26,33,45,0.018)"/>
+<line x1="0" y1="40" x2="1030" y2="40" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="124" x2="1030" y2="124" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="208" x2="1030" y2="208" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="292" x2="1030" y2="292" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="376" x2="1030" y2="376" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="460" x2="1030" y2="460" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="0" y1="460" x2="1030" y2="460" stroke="#dde2e9" stroke-width="0.8"/>
+<line x1="150" y1="40" x2="150" y2="460" stroke="#c7cfda" stroke-width="1"/>
+<rect x="247.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="255.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">1</text>
+<text x="255.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">XÂY DỰNG</text>
+<rect x="457.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="465.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">2</text>
+<text x="465.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">MUA HÀNG</text>
+<rect x="667.0" y="8" width="16" height="16" rx="8" fill="rgba(26,33,45,0.10)" stroke="none" stroke-width="0"/>
+<text x="675.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1a212d">3</text>
+<text x="675.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#65758b">LẮP ĐẶT</text>
+<rect x="877.0" y="8" width="16" height="16" rx="8" fill="rgba(22,105,177,0.08)" stroke="#1669b1" stroke-width="1"/>
+<text x="885.0" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#1669b1">4</text>
+<text x="885.0" y="32" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" letter-spacing="0.12em" fill="#1669b1">NGHIỆM THU</text>
+<text x="75.0" y="85.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">PM</text>
+<text x="75.0" y="162.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">NHÀ THẦU</text>
+<text x="75.0" y="173.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">XÂY DỰNG</text>
+<text x="75.0" y="246.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">NCC THIẾT BỊ</text>
+<text x="75.0" y="257.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">(MUA HÀNG)</text>
+<text x="75.0" y="330.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">ĐỘI</text>
+<text x="75.0" y="341.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">LẮP ĐẶT</text>
+<text x="75.0" y="414.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">KH /</text>
+<text x="75.0" y="425.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" letter-spacing="0.08em" fill="#65758b">NGHIỆM THU</text>
+<line x1="350.0" y1="82.0" x2="370.0" y2="82.0" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<line x1="560.0" y1="82.0" x2="580.0" y2="82.0" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<line x1="770.0" y1="82.0" x2="790.0" y2="82.0" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 350.0,166.0 H 462.0 Q 470.0,166.0 470.0,158.0 V 115.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 560.0,87.0 H 457.0 Q 465.0,87.0 465.0,95.0 V 217.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 560.0,250.0 H 672.0 Q 680.0,250.0 680.0,242.0 V 115.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 770.0,87.0 H 667.0 Q 675.0,87.0 675.0,95.0 V 301.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 770.0,334.0 H 882.0 Q 890.0,334.0 890.0,326.0 V 115.0" fill="none" stroke="#65758b" stroke-width="1.0" marker-end="url(#arrow)"/>
+<path d="M 980.0,82.0 H 877.0 Q 885.0,82.0 885.0,90.0 V 385.0" fill="none" stroke="#1669b1" stroke-width="1.2" marker-end="url(#arrow-accent)"/>
+<rect x="160.0" y="49.0" width="190" height="66" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="164.0" y="53.0" width="18" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="173.0" y="60.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PM</text>
+<text x="255.0" y="76.0" text-anchor="middle" font-size="9" font-weight="600" fill="#1a212d">PM theo dõi tiến độ</text>
+<foreignObject x="166.0" y="80.0" width="178" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Geist Mono',monospace;font-size:6px;color:#65758b;text-align:center;line-height:1.35">4 stage · trip-wire deadline</div></foreignObject>
+<text x="255.0" y="107.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">ProgressBoard/TaskBoard</text>
+<rect x="166.0" y="105.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="174.0" y="111.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="328.0" y="105.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="336.0" y="111.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="160.0" y="133.0" width="190" height="66" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="164.0" y="137.0" width="18" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="173.0" y="144.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">XD</text>
+<text x="255.0" y="160.0" text-anchor="middle" font-size="9" font-weight="600" fill="#1a212d">Thi công xây dựng</text>
+<foreignObject x="166.0" y="164.0" width="178" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Geist Mono',monospace;font-size:6px;color:#65758b;text-align:center;line-height:1.35">ép cọc·móng·kết cấu thép·PCCC (n=4–9 dự án)</div></foreignObject>
+<text x="255.0" y="191.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">Nhà thầu Xây dựng</text>
+<rect x="166.0" y="189.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="174.0" y="195.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="328.0" y="189.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="336.0" y="195.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="370.0" y="49.0" width="190" height="66" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="374.0" y="53.0" width="18" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="383.0" y="60.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PM</text>
+<text x="465.0" y="76.0" text-anchor="middle" font-size="9" font-weight="600" fill="#1a212d">PM theo dõi tiến độ</text>
+<foreignObject x="376.0" y="80.0" width="178" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Geist Mono',monospace;font-size:6px;color:#65758b;text-align:center;line-height:1.35">milestone: bàn giao mặt bằng móng (n=4)</div></foreignObject>
+<text x="465.0" y="107.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">ProgressBoard/TaskBoard</text>
+<rect x="376.0" y="105.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="384.0" y="111.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="538.0" y="105.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="546.0" y="111.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="370.0" y="217.0" width="190" height="66" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="374.0" y="221.0" width="18" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="383.0" y="228.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">NCC</text>
+<text x="465.0" y="244.0" text-anchor="middle" font-size="9" font-weight="600" fill="#1a212d">Mua hàng &amp; chế tạo thiết bị</text>
+<foreignObject x="376.0" y="248.0" width="178" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Geist Mono',monospace;font-size:6px;color:#65758b;text-align:center;line-height:1.35">Lò hơi + 130 work-package thiết bị (Bồn dầu, Multicyclone, Lọc bụi túi, PLC-SCADA...)</div></foreignObject>
+<text x="465.0" y="275.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">Martech / NCC</text>
+<rect x="376.0" y="273.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="384.0" y="279.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="538.0" y="273.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="546.0" y="279.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="580.0" y="49.0" width="190" height="66" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="584.0" y="53.0" width="18" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="593.0" y="60.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PM</text>
+<text x="675.0" y="76.0" text-anchor="middle" font-size="9" font-weight="600" fill="#1a212d">PM theo dõi tiến độ</text>
+<foreignObject x="586.0" y="80.0" width="178" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Geist Mono',monospace;font-size:6px;color:#65758b;text-align:center;line-height:1.35">cẩu lắp là mốc rủi ro cao nhất (n=10)</div></foreignObject>
+<text x="675.0" y="107.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">ProgressBoard/TaskBoard</text>
+<rect x="586.0" y="105.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="594.0" y="111.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="748.0" y="105.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="756.0" y="111.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="580.0" y="301.0" width="190" height="66" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="584.0" y="305.0" width="18" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="593.0" y="312.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">LĐ</text>
+<text x="675.0" y="328.0" text-anchor="middle" font-size="9" font-weight="600" fill="#1a212d">Lắp đặt hệ thống lò</text>
+<foreignObject x="586.0" y="332.0" width="178" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Geist Mono',monospace;font-size:6px;color:#65758b;text-align:center;line-height:1.35">cẩu lắp·điện·bảo ôn·test·hâm lò·tẩy lò (n=4–10)</div></foreignObject>
+<text x="675.0" y="359.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">Đội lắp đặt + Xây dựng</text>
+<rect x="586.0" y="357.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="594.0" y="363.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<rect x="748.0" y="357.0" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="756.0" y="363.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<rect x="790.0" y="49.0" width="190" height="66" rx="4" fill="#ffffff" stroke="#1a212d" stroke-width="1"/>
+<rect x="794.0" y="53.0" width="18" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="803.0" y="60.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">PM</text>
+<text x="885.0" y="76.0" text-anchor="middle" font-size="9" font-weight="600" fill="#1a212d">PM đóng hồ sơ</text>
+<foreignObject x="796.0" y="80.0" width="178" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Geist Mono',monospace;font-size:6px;color:#65758b;text-align:center;line-height:1.35">hồ sơ hoàn công · lessons learned</div></foreignObject>
+<text x="885.0" y="107.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">ProgressBoard/TaskBoard</text>
+<rect x="796.0" y="105.0" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="804.0" y="111.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<rect x="958.0" y="105.0" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="966.0" y="111.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<rect x="790.0" y="385.0" width="190" height="66" rx="4" fill="rgba(22,105,177,0.08)" stroke="#1669b1" stroke-width="1.4"/>
+<rect x="794.0" y="389.0" width="18" height="10" rx="2" fill="rgba(26,33,45,0.10)"/>
+<text x="803.0" y="396.5" text-anchor="middle" font-size="5.2" font-weight="700" fill="#1a212d">NT</text>
+<text x="885.0" y="412.0" text-anchor="middle" font-size="9" font-weight="600" fill="#1669b1">Nghiệm thu &amp; vận hành chính thức</text>
+<foreignObject x="796.0" y="416.0" width="178" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Geist Mono',monospace;font-size:6px;color:#65758b;text-align:center;line-height:1.35">vận hành thử·hồ sơ hoàn công·cấp hơi chính thức (n=4–6)</div></foreignObject>
+<text x="885.0" y="443.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="6" fill="#8a97a8">PM + KH + BOD</text>
+<rect x="796.0" y="441.0" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="804.0" y="447.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<rect x="958.0" y="441.0" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="966.0" y="447.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<text x="160" y="450" font-family="Geist Mono, monospace" font-size="6.5" font-style="italic" fill="#f59f0a">⚠ Pháp Lý (PCCC, môi trường, nghiệm thu pháp lý) chạy song song, không tuần tự — gắn với mốc 3.8/3.7 (Nghiệm thu PCCC/xây dựng). Chưa vẽ lane riêng ở bản v0.1 này.</text>
+<text x="154" y="473" font-family="Geist Mono, monospace" font-size="7" letter-spacing="0.1em" fill="#8a97a8">STEPS</text>
+<rect x="210" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="217" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">1</text>
+<text x="228" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Xây Dựng</text>
+<rect x="296.0" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="303.0" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">2</text>
+<text x="314.0" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Mua Hàng</text>
+<rect x="382.0" y="466" width="14" height="14" rx="7" fill="rgba(26,33,45,0.10)"/>
+<text x="389.0" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1a212d">3</text>
+<text x="400.0" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Lắp Đặt</text>
+<rect x="461.5" y="466" width="14" height="14" rx="7" fill="rgba(22,105,177,0.08)"/>
+<text x="468.5" y="476" text-anchor="middle" font-size="7" font-weight="700" fill="#1669b1">4</text>
+<text x="479.5" y="476" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Nghiệm Thu</text>
+<text x="154" y="499" font-family="Geist Mono, monospace" font-size="7" letter-spacing="0.1em" fill="#8a97a8">DATA TYPE</text>
+<rect x="242" y="491" width="16" height="8" rx="2" fill="#7c8f6f"/>
+<text x="250" y="497" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">LS</text>
+<text x="262" y="497" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">List/task</text>
+<rect x="332" y="491" width="16" height="8" rx="2" fill="#9c6b50"/>
+<text x="340" y="497" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">FL</text>
+<text x="352" y="497" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">File/report</text>
+<rect x="434" y="491" width="16" height="8" rx="2" fill="#b8915a"/>
+<text x="442" y="497" text-anchor="middle" font-family="Geist Mono, monospace" font-size="5" font-weight="700" fill="#fff">TB</text>
+<text x="454" y="497" font-family="Geist Mono, monospace" font-size="6" fill="#65758b">Table</text>
+<text x="154" y="520" font-family="Geist Mono, monospace" font-size="7" letter-spacing="0.1em" fill="#8a97a8">NGUỒN</text>
+<text x="220" y="520" font-family="Geist Mono, monospace" font-size="6.5" fill="#65758b">wbs_catalog + progress_items + tasks (task_type=work_package), query trực tiếp Lovable project pdathuanhai, 28/08/2026</text>
+</svg>
+  </div>
+
+  <footer>
+    <b>Nguồn:</b> query trực tiếp Lovable project <code>pdathuanhai</code> (Thuan Hai Energy - Phòng Dự Án) ngày 28/08/2026 — <code>wbs_catalog</code> (45 dòng, applies_to='steam'), <code>progress_items</code> JOIN <code>wbs_catalog</code> GROUP BY wbs_code (adoption theo dự án), <code>tasks</code> GROUP BY title/task_type. Đối chiếu <code>src/components/ProgressBoard.tsx</code> (RPC <code>seed_project_wbs_from_catalog</code>) và <code>src/components/TaskBoard.tsx</code>.<br>
+    <span class="open">Giới hạn đã biết:</span> <code>wbs_catalog</code> chỉ có scope <code>steam</code> — dự án Xây Dựng thuần hoặc Biomass <b>chưa có catalog tương đương</b>, cần làm riêng nếu áp dụng. Lớp work-package thiết bị (130 dòng) hiện chỉ tồn tại như task tự do trong <code>tasks</code>, <b>chưa được chuẩn hoá vào wbs_catalog</b> — nếu muốn mọi dự án mới tự động có đúng bộ thiết bị này, cần bổ sung catalog level-4 riêng, ngoài phạm vi diagram này.<br>
+    <b>Chưa vẽ:</b> lane Pháp Lý riêng (PCCC/môi trường/nghiệm thu pháp lý chạy song song, xem chú thích trên diagram); RACI chi tiết PM vs Nhà thầu vs NCC; KPI/SLA từng mốc; checklist nghiệm thu đầy đủ.
+  </footer>
+</body>
+</html>
