@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Full Lifecycle WBS &amp; Milestone — Lead to Handover (v0.1)</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f8fafc; --ink: #1a212d; --muted: #65758b; --soft: #8a97a8;
+    --rule: #dde2e9; --rule-solid: #c7cfda; --accent: #1669b1;
+    --accent-tint: rgba(22,105,177,0.08); --warn: #f59f0a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Geist', Inter, sans-serif; padding: 32px 24px 64px; }
+  h1 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.9rem; margin: 0 0 4px; }
+  .eyebrow { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin: 0 0 8px; max-width: 860px; line-height: 1.55; }
+  .status { display:inline-block; font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:.08em; color:var(--warn); border:1px solid var(--warn); border-radius:4px; padding:2px 8px; margin-bottom:20px; }
+  .stats { display:flex; gap:20px; font-family:'Geist Mono',monospace; font-size:11px; color:var(--muted); margin-bottom: 24px; flex-wrap: wrap; }
+  .stats b { color: var(--ink); font-size: 14px; }
+
+  .timeline { max-width: 880px; position: relative; }
+
+  .section-header { display:flex; align-items:center; gap:10px; margin: 28px 0 6px; padding-left: 0; }
+  .section-header:first-child { margin-top: 0; }
+  .section-marker { width: 22px; height: 22px; border-radius: 50%; background: var(--section-color); flex: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--section-color) 15%, transparent); }
+  .section-title { font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--section-color); text-transform: uppercase; }
+  .section-note { font-weight: 400; color: var(--muted); text-transform: none; letter-spacing: 0; }
+
+  .row { display: flex; gap: 12px; position: relative; padding: 0 0 0 5px; }
+  .row::before { content:''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: var(--rule-solid); }
+  .row:last-child::before { display: none; }
+  .marker { width: 32px; flex: none; display:flex; align-items:flex-start; justify-content:center; padding-top: 3px; font-size: 10px; color: var(--muted); background: var(--paper); z-index: 1; height: fit-content; }
+  .marker-gate { color: var(--accent); font-size: 13px; font-weight: 700; }
+  .marker-terminal { color: var(--ink); font-size: 14px; }
+  .marker-end { color: var(--warn); font-size: 16px; }
+  .content { padding: 5px 0 14px; flex: 1; min-width: 0; }
+  .row-gate .content { padding-bottom: 16px; }
+  .title { font-size: 12.5px; font-weight: 500; }
+  .row-gate .title { font-weight: 700; color: var(--accent); }
+  .title-end { font-family: 'Instrument Serif', serif; font-size: 16px; font-weight: 400; color: var(--warn); }
+  .code { font-family: 'Geist Mono', monospace; font-size: 9px; color: var(--soft); background: rgba(26,33,45,0.06); border-radius: 3px; padding: 1px 5px; margin-right: 7px; }
+  .row-gate .code { color: var(--accent); background: var(--accent-tint); }
+  .sub { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .row-terminal { padding-bottom: 4px; }
+  .row-terminal .content { padding-top: 0; }
+
+  footer { margin-top: 32px; font-size: 11px; color: var(--muted); max-width: 860px; line-height: 1.6; }
+  footer b { color: var(--ink); }
+  footer .open { color: var(--warn); }
+</style>
+</head>
+<body>
+  <div class="eyebrow">Full lifecycle WBS &amp; Milestone · gộp Development + Execution Stage</div>
+  <h1>Từ Sales Gửi Lead đến Nghiệm Thu &amp; Bàn Giao Khối Sản Xuất</h1>
+  <div class="status">DRAFT v0.1 — dựng từ dữ liệu thật (wbs_catalog sau migration 28/08/2026), chờ Minh xác nhận</div>
+  <p class="subtitle">1 timeline dọc duy nhất, nối liền <b>Project Development Stage</b> (10 bước, chưa nằm trong <code>wbs_catalog</code>) và <b>Project Execution Stage</b> (6 pillar, đúng <code>wbs_catalog</code> thật — 59 dòng sau migration). Mở rộng được xuống dưới: thêm bước/hạng mục chỉ cần thêm 1 row, không phá layout. ◆ = milestone chuẩn (8 điểm đã chốt), ● = hạng mục thường.</p>
+  <div class="stats">
+    <div><b>65</b> hạng mục hiển thị</div>
+    <div><b>10</b> milestone (◆)</div>
+    <div><b>2</b> stage</div>
+    <div><b>6</b> pillar Execution</div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="row row-terminal">
+      <div class="marker marker-terminal">●</div>
+      <div class="content"><div class="title">Sales gửi lead</div><div class="sub">email / CRM — điểm bắt đầu dự án</div></div>
+    </div>
+
+    <div class="section-header" style="--section-color:#1669b1">
+      <div class="section-marker"></div>
+      <div class="section-title">PROJECT DEVELOPMENT STAGE<span class="section-note"> — Org Option A/B áp dụng ở đây — xem branch-1/branch-2</span></div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">A.1</span>Intake</div>
+        <div class="sub">yêu cầu đủ dữ liệu tối thiểu</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">A.2</span>PM Assignment</div>
+        <div class="sub">mở project workspace</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">A.3</span>Survey Decision + Field Survey</div>
+        <div class="sub">evidence · photos · open items</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">A.4</span>Investment Assessment</div>
+        <div class="sub">assumption register · model</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">A.5</span>Technical Feasibility</div>
+        <div class="sub">song song — Kỹ thuật / Xây dựng</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">A.6</span>Preliminary Scenario</div>
+        <div class="sub">khoá version trước khi trình BOD</div>
+      </div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">A.7</span>BOD Gate ★</div>
+        <div class="sub">phê duyệt kịch bản/dự toán — hoặc yêu cầu sửa (revision loop → A.6)</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">A.8</span>Negotiation Support</div>
+        <div class="sub">PKD đàm phán · PM/Expertise hỗ trợ kỹ thuật</div>
+      </div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">A.9</span>Contract Signed ★</div>
+        <div class="sub">PKD cập nhật — trùng milestone 1.2 dưới đây (cùng 1 sự kiện)</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">A.10</span>Tính lại hiệu quả đầu tư sau ký</div>
+        <div class="sub">recalc vs BOD-approved scenario</div>
+      </div>
+    </div>
+
+    <div class="section-header" style="--section-color:#7c8f6f">
+      <div class="section-marker"></div>
+      <div class="section-title">PILLAR 1 — PHÁP LÝ DỰ ÁN<span class="section-note"> — chạy song song, không tuần tự — xuyên suốt Xây Dựng</span></div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">1.1</span>Quy hoạch tổng thể 1/500</div>
+        
+      </div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">1.2</span>Đàm phán và ký kết hợp đồng ★</div>
+        <div class="sub">= Contract Signed (A.9), cùng 1 sự kiện</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">1.3</span>Thẩm duyệt bản vẽ và xin phép xây dựng</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">1.4</span>Giấy phép xây dựng</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">1.5</span>Thẩm duyệt bản vẽ và xin phép PCCC</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">1.6</span>Thực hiện Giấy phép môi trường</div>
+        
+      </div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">1.7</span>Nghiệm Thu Pháp Lý Dự Án ★</div>
+        
+      </div>
+    </div>
+
+    <div class="section-header" style="--section-color:#5e7a9b">
+      <div class="section-marker"></div>
+      <div class="section-title">PILLAR 2 — THIẾT KẾ</div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">2.1</span>Thiết kế bản vẽ Layout</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">2.2</span>Nhà máy xác nhận layout bố trí thiết bị</div>
+        
+      </div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">2.3</span>Bàn Giao Hồ Sơ ★</div>
+        
+      </div>
+    </div>
+
+    <div class="section-header" style="--section-color:#b8915a">
+      <div class="section-marker"></div>
+      <div class="section-title">PILLAR 3 — THI CÔNG XÂY DỰNG</div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">3.0a</span>Chuẩn bị mặt bằng thi công, láng trại ★</div>
+        <div class="sub">mới thêm 28/08 — trước 3.0</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.0</span>Tháo dỡ hệ thống lò cũ</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.1</span>Cung cấp và thi công ép cọc</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.2</span>Móng máy thiết bị, móng nhà xưởng</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.3</span>Kết cấu thép Nhà lò</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.3a</span>Dựng khung thép nhà lò (hở mái)</div>
+        <div class="sub">biến thể</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.3b</span>Lợp mái nhà lò</div>
+        <div class="sub">biến thể</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.4</span>Sàn, PĐK, WC, hoàn thiện tường</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.5</span>Thi công PCCC và chiếu sáng</div>
+        
+      </div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">3.6</span>Bàn giao mặt bằng móng để cẩu lắp thiết bị ★</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.7</span>Nghiệm thu xây dựng</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">3.8</span>Nghiệm thu PCCC</div>
+        
+      </div>
+    </div>
+
+    <div class="section-header" style="--section-color:#9c6b50">
+      <div class="section-marker"></div>
+      <div class="section-title">PILLAR 4 — MUA HÀNG &amp; CHẾ TẠO<span class="section-note"> — 13 dòng equipment breakdown dưới 4.1 (level=3, parent_code=4.1)</span></div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1</span>Mua hàng và thiết bị Hệ thống Lò Hơi</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.1</span>Multicyclone</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.2</span>Lọc bụi túi</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.3</span>Hệ tải xỉ</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.4</span>Hệ cấp liệu</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.5</span>Bộ sấy không khí</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.6</span>Quạt cấp &amp; Quạt hút</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.7</span>Bộ hâm nước</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.8</span>PLC-SCADA, điện</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.9</span>Bồn dầu</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.10</span>Bộ sinh hơi</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.11</span>Bộ góp hơi &amp; nhiệt</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.12</span>Buồng đốt &amp; Phụ trợ</div>
+        <div class="sub">equipment breakdown</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.1.99</span>Hệ phụ trợ khác</div>
+        <div class="sub">catch-all, không seed mặc định</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.2</span>Chế tạo hệ thống thiết bị Lò Hơi</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">4.3</span>Vận chuyển và tập kết thiết bị đến Site</div>
+        
+      </div>
+    </div>
+
+    <div class="section-header" style="--section-color:#6e6479">
+      <div class="section-marker"></div>
+      <div class="section-title">PILLAR 5 — LẮP ĐẶT HỆ THỐNG LÒ</div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">5.1</span>Cẩu lắp các thiết bị chính ★</div>
+        <div class="sub">n=10/10 dự án — single point of failure</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.2</span>Lắp đặt thiết bị và hệ thống phụ trợ</div>
+        <div class="sub">multi-lò: lặp "…lò số 1/số 2"</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.3</span>Lắp đặt hệ thống cấp liệu</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.4</span>Lắp đặt hệ thống điện</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.5</span>Cung cấp điện cho hệ thống lò</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.6</span>Lắp đặt bảo ôn</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.7</span>Lắp túi lọc</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.8</span>Test thiết bị và hoàn tất lắp đặt hệ thống lò</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.9</span>Châm dầu hệ thống và chạy tuần hoàn tách khí</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.10</span>Hâm lò</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">5.11</span>Tẩy lò</div>
+        
+      </div>
+    </div>
+
+    <div class="section-header" style="--section-color:#f59f0a">
+      <div class="section-marker"></div>
+      <div class="section-title">PILLAR 6 — NGHIỆM THU HỆ THỐNG LÒ<span class="section-note"> — kết thúc Project Execution Stage</span></div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">6.1</span>Vận hành thử nghiệm</div>
+        <div class="sub">multi-lò: "…lò số 1/số 2"</div>
+      </div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">6.2</span>Nghiệm thu hoàn thành công trình thiết bị ★</div>
+        
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="marker marker-step">●</div>
+      <div class="content">
+        <div class="title"><span class="code">6.3</span>Lập hồ sơ hoàn công và nghiệm thu thiết bị</div>
+        
+      </div>
+    </div>
+
+    <div class="row row-gate">
+      <div class="marker marker-gate">◆</div>
+      <div class="content">
+        <div class="title"><span class="code">6.4</span>Vận hành chính thức và cấp hơi cho nhà máy sản xuất ★</div>
+        <div class="sub">GO-LIVE — bàn giao Khối Sản Xuất</div>
+      </div>
+    </div>
+
+    <div class="row row-terminal row-end">
+      <div class="marker marker-terminal marker-end">★</div>
+      <div class="content"><div class="title title-end">KẾT THÚC DỰ ÁN</div><div class="sub">Bàn giao Khối Sản Xuất</div></div>
+    </div>
+  </div>
+
+  <footer>
+    <b>Nguồn:</b> Notion "PM Squad — Socratic Drill &amp; Operating Model"; <code>wbs_catalog</code> (59 dòng, query trực tiếp Lovable project <code>pdathuanhai</code> sau migration 28/08/2026); <code>docs/WBS_Milestone_v1.md</code> trong <code>thuanhaipricingtool</code>.<br>
+    <b>8 milestone chuẩn:</b> BOD Gate · Contract Signed (= wbs 1.2) · 1.7 Nghiệm Thu Pháp Lý · 2.3 Bàn Giao Hồ Sơ · 3.0a Chuẩn bị mặt bằng · 3.6 Bàn giao mặt bằng móng · 5.1 Cẩu lắp thiết bị chính · 6.2 Nghiệm thu công trình thiết bị · 6.4 Vận hành chính thức (go-live).<br>
+    <span class="open">Chưa vẽ / chưa chốt:</span> catalog tương đương cho scope Xây Dựng/Biomass; force dropdown chọn milestone (còn tự do gõ tên ở 1 số nơi); RACI chi tiết; % thanh toán theo pillar (giữ tự do theo hợp đồng, quyết định 28/08); Org Option A vs B chưa chọn (xem <code>branch-1/</code>, <code>branch-2/</code>).
+  </footer>
+</body>
+</html>
